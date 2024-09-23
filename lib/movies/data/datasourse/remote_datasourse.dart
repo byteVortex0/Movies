@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
-import 'package:movies/core/error/exceptions.dart';
-import 'package:movies/core/network/error_message_model.dart';
-import 'package:movies/movies/data/models/movie_model.dart';
+import '../../../core/error/exceptions.dart';
+import '../../../core/network/error_message_model.dart';
+import '../models/movie_model.dart';
 
 abstract class BaseRemoteDatasourse {
   Future<List<MovieModel>> getPlayingNow();

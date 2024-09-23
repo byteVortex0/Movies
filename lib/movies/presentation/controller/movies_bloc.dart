@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movies/core/utils/enums.dart';
-import 'package:movies/movies/presentation/controller/movies_event.dart';
-import 'package:movies/movies/presentation/controller/movies_state.dart';
+import '../../../core/utils/enums.dart';
+import 'movies_event.dart';
+import 'movies_state.dart';
 
 import '../../data/datasourse/remote_datasourse.dart';
 import '../../data/repository/movie_repo.dart';

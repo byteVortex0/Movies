@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:movies/core/services/sevices_locater.dart';
 import 'movies/presentation/screens/movies_screen.dart';
 
 void main() {
+  ServicesLocater().init();
   runApp(const MyApp());
 }
 

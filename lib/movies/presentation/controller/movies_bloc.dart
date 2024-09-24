@@ -3,19 +3,13 @@ import '../../../core/utils/enums.dart';
 import 'movies_event.dart';
 import 'movies_state.dart';
 
-import '../../data/datasourse/remote_datasourse.dart';
-import '../../data/repository/movie_repo.dart';
-import '../../domain/repository/base_movie_repo.dart';
 import '../../domain/usecases/get_now_playing_usecase.dart';
 
 class MoviesBloc extends Bloc<MoviesEvent, MoviesState> {
-  MoviesBloc() : super(const MoviesState()) {
+  final GetNowPlayingUsecase getNowPlayingUsecase;
+  MoviesBloc(this.getNowPlayingUsecase) : super(const MoviesState()) {
     on<GetNowPlaying>((event, emit) async {
-      BaseRemoteDatasourse baseRemoteDatasourse = RemoteDatasourse();
-      BaseMovieRepo baseMovieRepo =
-          MovieRepo(baseRemoteDatasourse: baseRemoteDatasourse);
-      final result =
-          await GetNowPlayingUsecase(baseMovieRepo: baseMovieRepo).execute();
+      final result = await getNowPlayingUsecase.execute();
       result.fold((l) {
         emit(MoviesState(
           requestState: RequestState.error,

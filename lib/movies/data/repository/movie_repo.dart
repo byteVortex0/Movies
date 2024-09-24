@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
-import 'package:movies/core/error/exceptions.dart';
-import 'package:movies/core/error/failure.dart';
-import 'package:movies/movies/data/datasourse/remote_datasourse.dart';
-import 'package:movies/movies/domain/entities/movie.dart';
-import 'package:movies/movies/domain/repository/base_movie_repo.dart';
+import '../../../core/error/exceptions.dart';
+import '../../../core/error/failure.dart';
+import '../datasourse/remote_datasourse.dart';
+import '../../domain/entities/movie.dart';
+import '../../domain/repository/base_movie_repo.dart';
 
 class MovieRepo extends BaseMovieRepo {
   final BaseRemoteDatasourse baseRemoteDatasourse;

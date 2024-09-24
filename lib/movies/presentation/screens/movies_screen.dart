@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:movies/movies/presentation/controller/movies_event.dart';
+
+import '../../../core/services/sevices_locater.dart';
 import '../components/now_playing_component.dart';
 import '../components/popular_component.dart';
 import '../components/top_rate_component.dart';
-
-import '../../../core/services/sevices_locater.dart';
 import '../controller/movies_bloc.dart';
+import '../controller/movies_event.dart';
 
 class MoviesScreen extends StatelessWidget {
   const MoviesScreen({super.key});

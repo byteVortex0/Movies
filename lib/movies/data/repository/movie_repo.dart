@@ -1,5 +1,4 @@
 import 'package:dartz/dartz.dart';
-import '../models/movie_details_model.dart';
 import '../../domain/entities/movie_details.dart';
 
 import '../../../core/error/exceptions.dart';

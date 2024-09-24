@@ -1,5 +1,7 @@
 import 'package:dio/dio.dart';
+
 import '../../../core/error/exceptions.dart';
+import '../../../core/network/api_constance.dart';
 import '../../../core/network/error_message_model.dart';
 import '../models/movie_model.dart';
 
@@ -12,11 +14,11 @@ abstract class BaseRemoteDatasourse {
 class RemoteDatasourse extends BaseRemoteDatasourse {
   @override
   Future<List<MovieModel>> getPlayingNow() async {
-    var res = await Dio().get('');
+    var res = await Dio().get(ApiConstance.nowPlayingMoviesPath);
 
     if (res.statusCode == 200) {
-      return List<MovieModel>.from(
-          (res.data['result'] as List).map((e) => MovieModel.fromJson(e)));
+      var results = res.data['results'];
+      return List<MovieModel>.from(results.map((e) => MovieModel.fromJson(e)));
     } else {
       throw ServerExceptions(
           errorMessageModel: ErrorMessageModel.fromJson(res.data));
@@ -25,10 +27,10 @@ class RemoteDatasourse extends BaseRemoteDatasourse {
 
   @override
   Future<List<MovieModel>> getPopularMovies() async {
-    var res = await Dio().get('');
+    var res = await Dio().get(ApiConstance.popularMoviesPath);
     if (res.statusCode == 200) {
-      return List<MovieModel>.from(
-          (res.data['result'] as List).map((e) => MovieModel.fromJson(e)));
+      var results = res.data['results'];
+      return List<MovieModel>.from(results.map((e) => MovieModel.fromJson(e)));
     } else {
       throw ServerExceptions(
           errorMessageModel: ErrorMessageModel.fromJson(res.data));
@@ -37,10 +39,10 @@ class RemoteDatasourse extends BaseRemoteDatasourse {
 
   @override
   Future<List<MovieModel>> getTopRatedMovies() async {
-    var res = await Dio().get('');
+    var res = await Dio().get(ApiConstance.topRatedMoviesPath);
     if (res.statusCode == 200) {
-      return List<MovieModel>.from(
-          (res.data['result'] as List).map((e) => MovieModel.fromJson(e)));
+      var results = res.data['results'];
+      return List<MovieModel>.from(results.map((e) => MovieModel.fromJson(e)));
     } else {
       throw ServerExceptions(
           errorMessageModel: ErrorMessageModel.fromJson(res.data));

@@ -1,7 +1,7 @@
 abstract class MoviesEvent {}
 
-class GetNowPlaying extends MoviesEvent {}
+class GetNowPlayingEvent extends MoviesEvent {}
 
-class GetPopulerMovies extends MoviesEvent {}
+class GetPopularMoviesEvent extends MoviesEvent {}
 
-class GetTopRatedMovies extends MoviesEvent {}
+class GetTopRatedMoviesEvent extends MoviesEvent {}

@@ -1,9 +1,10 @@
 import 'package:dartz/dartz.dart';
+
 import '../../../core/error/exceptions.dart';
 import '../../../core/error/failure.dart';
-import '../datasourse/remote_datasourse.dart';
 import '../../domain/entities/movie.dart';
 import '../../domain/repository/base_movie_repo.dart';
+import '../datasourse/remote_datasourse.dart';
 
 class MovieRepo extends BaseMovieRepo {
   final BaseRemoteDatasourse baseRemoteDatasourse;
@@ -23,7 +24,7 @@ class MovieRepo extends BaseMovieRepo {
 
   @override
   Future<Either<Failure, List<Movie>>> getPopularMovies() async {
-    var result = await baseRemoteDatasourse.getPlayingNow();
+    var result = await baseRemoteDatasourse.getPopularMovies();
     try {
       return Right(result);
     } on ServerExceptions catch (failuer) {
@@ -34,7 +35,7 @@ class MovieRepo extends BaseMovieRepo {
 
   @override
   Future<Either<Failure, List<Movie>>> getTopRatedMovies() async {
-    var result = await baseRemoteDatasourse.getPlayingNow();
+    var result = await baseRemoteDatasourse.getTopRatedMovies();
     try {
       return Right(result);
     } on ServerExceptions catch (failuer) {

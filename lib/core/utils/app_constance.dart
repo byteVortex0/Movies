@@ -1,3 +1,3 @@
 class AppConstance {
-  static String baseUrl = '';
+  static const baseUrl = "https://api.themoviedb.org/3";
 }

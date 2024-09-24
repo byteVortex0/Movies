@@ -1,4 +1,6 @@
 import 'package:dartz/dartz.dart';
+import '../../domain/entities/recommendation.dart';
+import '../../domain/usecases/get_movie_recommendation_usecase.dart';
 import '../../domain/entities/movie_details.dart';
 
 import '../../../core/error/exceptions.dart';
@@ -50,6 +52,19 @@ class MovieRepo extends BaseMovieRepo {
     var result = await baseRemoteDatasourse.getMovieDetails(movieId);
     try {
       return Right(result);
+    } on ServerExceptions catch (failuer) {
+      return Left(
+        ServerFailuer(message: failuer.errorMessageModel.statusMessage),
+      );
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<Recommendation>>> getMovieRecommendation(
+      MovieRecommendationParam movieId) async {
+    var results = await baseRemoteDatasourse.getMovieRecommendation(movieId);
+    try {
+      return Right(results);
     } on ServerExceptions catch (failuer) {
       return Left(
         ServerFailuer(message: failuer.errorMessageModel.statusMessage),

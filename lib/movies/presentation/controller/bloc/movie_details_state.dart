@@ -13,7 +13,7 @@ class MovieDetailsState extends Equatable {
   final MovieDetails? movieDetails;
   final RequestState movieDetailsRequestState;
   final String movieDetailsMassege;
-  final List<MovieDetails> movierecommendation;
+  final List<Recommendation> movierecommendation;
   final RequestState movierecommendationState;
   final String movierecommendationMassege;
 
@@ -21,7 +21,7 @@ class MovieDetailsState extends Equatable {
     MovieDetails? movieDetails,
     RequestState? movieDetailsRequestState,
     String? movieDetailsMassege,
-    List<MovieDetails>? movierecommendation,
+    List<Recommendation>? movierecommendation,
     RequestState? movierecommendationState,
     String? movierecommendationMassege,
   }) =>

@@ -1,4 +1,5 @@
 import 'package:get_it/get_it.dart';
+import '../../movies/domain/usecases/get_movie_recommendation_usecase.dart';
 import '../../movies/domain/usecases/get_movie_details_usecase.dart';
 import '../../movies/domain/usecases/get_popular_movies_usecase.dart';
 import '../../movies/domain/usecases/get_top_rated_movies_usecase.dart';
@@ -31,11 +32,14 @@ class ServicesLocater {
     sl.registerLazySingleton<GetMovieDetailsUseCase>(
       () => GetMovieDetailsUseCase(baseMovieRepo: sl()),
     );
+    sl.registerLazySingleton<GetMovieRecommendationUsecase>(
+      () => GetMovieRecommendationUsecase(baseMovieRepo: sl()),
+    );
     sl.registerFactory<MoviesBloc>(
       () => MoviesBloc(sl(), sl(), sl()),
     );
     sl.registerFactory<MovieDetailsBloc>(
-      () => MovieDetailsBloc(sl()),
+      () => MovieDetailsBloc(sl(), sl()),
     );
   }
 }

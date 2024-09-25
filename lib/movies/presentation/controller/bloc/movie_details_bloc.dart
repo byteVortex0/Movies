@@ -2,8 +2,10 @@ import 'dart:async';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
+import '../../../domain/usecases/get_movie_recommendation_usecase.dart';
 import '../../../../core/utils/enums.dart';
 import '../../../domain/entities/movie_details.dart';
+import '../../../domain/entities/recommendation.dart';
 import '../../../domain/usecases/get_movie_details_usecase.dart';
 
 part 'movie_details_event.dart';
@@ -11,9 +13,13 @@ part 'movie_details_state.dart';
 
 class MovieDetailsBloc extends Bloc<MovieDetailsEvent, MovieDetailsState> {
   GetMovieDetailsUseCase getMovieDetailsUseCase;
-  MovieDetailsBloc(this.getMovieDetailsUseCase)
-      : super(const MovieDetailsState()) {
+  GetMovieRecommendationUsecase getMovieRecommendationUsecase;
+  MovieDetailsBloc(
+    this.getMovieDetailsUseCase,
+    this.getMovieRecommendationUsecase,
+  ) : super(const MovieDetailsState()) {
     on<GetMovieDetailsEvent>(_getMovieDetails);
+    on<GetMovieRecommendationEvent>(_getMovieRecommendation);
   }
 
   FutureOr<void> _getMovieDetails(event, emit) async {
@@ -31,5 +37,23 @@ class MovieDetailsBloc extends Bloc<MovieDetailsEvent, MovieDetailsState> {
         movieDetailsRequestState: RequestState.loaded,
       ));
     });
+  }
+
+  FutureOr<void> _getMovieRecommendation(event, emit) async {
+    // final result = await getMovieRecommendationUsecase(
+    //   MovieRecommendationParam(movieId: event.movieId),
+    // ); // ToDo  id
+
+    // result.fold((l) {
+    //   emit(state.copyWith(
+    //     movierecommendationState: RequestState.error,
+    //     movierecommendationMassege: l.message,
+    //   ));
+    // }, (r) {
+    //   emit(state.copyWith(
+    //     movierecommendation: r,
+    //     movieDetailsRequestState: RequestState.loaded,
+    //   ));
+    // });
   }
 }

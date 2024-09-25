@@ -24,7 +24,7 @@ class MovieDetailsBloc extends Bloc<MovieDetailsEvent, MovieDetailsState> {
 
   FutureOr<void> _getMovieDetails(event, emit) async {
     final result = await getMovieDetailsUseCase(
-      MovieDetailsParam(movieId: event.movieId),
+      MovieDetailsParam(movieId: event.id),
     );
     result.fold((l) {
       emit(state.copyWith(
@@ -40,20 +40,20 @@ class MovieDetailsBloc extends Bloc<MovieDetailsEvent, MovieDetailsState> {
   }
 
   FutureOr<void> _getMovieRecommendation(event, emit) async {
-    // final result = await getMovieRecommendationUsecase(
-    //   MovieRecommendationParam(movieId: event.movieId),
-    // ); // ToDo  id
+    final result = await getMovieRecommendationUsecase(
+      MovieRecommendationParam(movieId: event.id),
+    ); // ToDo  id
 
-    // result.fold((l) {
-    //   emit(state.copyWith(
-    //     movierecommendationState: RequestState.error,
-    //     movierecommendationMassege: l.message,
-    //   ));
-    // }, (r) {
-    //   emit(state.copyWith(
-    //     movierecommendation: r,
-    //     movieDetailsRequestState: RequestState.loaded,
-    //   ));
-    // });
+    result.fold((l) {
+      emit(state.copyWith(
+        movierecommendationState: RequestState.error,
+        movierecommendationMassege: l.message,
+      ));
+    }, (r) {
+      emit(state.copyWith(
+        movierecommendation: r,
+        movieDetailsRequestState: RequestState.loaded,
+      ));
+    });
   }
 }

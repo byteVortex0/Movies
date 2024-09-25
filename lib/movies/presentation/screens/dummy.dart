@@ -1,4 +1,4 @@
-import 'package:movies/movies/domain/entities/movie_details.dart';
+import '../../domain/entities/movie_details.dart';
 
 import '../../domain/entities/genres.dart';
 import '../../domain/entities/recommendation.dart';

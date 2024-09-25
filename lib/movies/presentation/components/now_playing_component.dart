@@ -3,7 +3,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movies/movies/presentation/screens/movie_detail_screen.dart';
+import '../screens/movie_detail_screen.dart';
 import '../../../core/utils/enums.dart';
 import '../controller/movies_bloc.dart';
 import '../controller/movies_state.dart';

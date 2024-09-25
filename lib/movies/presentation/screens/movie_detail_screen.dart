@@ -3,15 +3,13 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:movies/core/utils/enums.dart';
-import 'package:movies/movies/domain/entities/movie_details.dart';
-import 'package:movies/movies/presentation/screens/dummy.dart';
+import '../../../core/utils/enums.dart';
+import 'dummy.dart';
 import 'package:shimmer/shimmer.dart';
 
 import '../../../core/network/api_constance.dart';
 import '../../../core/services/sevices_locater.dart';
 import '../../domain/entities/genres.dart';
-import '../../domain/entities/recommendation.dart';
 import '../controller/bloc/movie_details_bloc.dart';
 
 class MovieDetailScreen extends StatelessWidget {

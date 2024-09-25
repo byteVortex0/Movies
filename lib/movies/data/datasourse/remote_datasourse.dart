@@ -1,10 +1,10 @@
 import 'package:dio/dio.dart';
-import '../../domain/usecases/get_movie_recommendation_usecase.dart';
 
 import '../../../core/error/exceptions.dart';
 import '../../../core/network/api_constance.dart';
 import '../../../core/network/error_message_model.dart';
 import '../../domain/usecases/get_movie_details_usecase.dart';
+import '../../domain/usecases/get_movie_recommendation_usecase.dart';
 import '../models/movie_details_model.dart';
 import '../models/movie_model.dart';
 import '../models/recommendation_model.dart';

@@ -1,12 +1,12 @@
 import 'dart:async';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../core/usecase/base_usecase.dart';
-import '../../domain/usecases/get_popular_movies_usecase.dart';
-import '../../domain/usecases/get_top_rated_movies_usecase.dart';
 
+import '../../../core/usecase/base_usecase.dart';
 import '../../../core/utils/enums.dart';
 import '../../domain/usecases/get_now_playing_usecase.dart';
+import '../../domain/usecases/get_popular_movies_usecase.dart';
+import '../../domain/usecases/get_top_rated_movies_usecase.dart';
 import 'movies_event.dart';
 import 'movies_state.dart';
 
@@ -28,6 +28,7 @@ class MoviesBloc extends Bloc<MoviesEvent, MoviesState> {
 
   FutureOr<void> _nowPlaying(event, emit) async {
     final result = await getNowPlayingUsecase(const NoParam());
+
     result.fold((l) {
       emit(state.copyWith(
         nowPlayingRequestState: RequestState.error,

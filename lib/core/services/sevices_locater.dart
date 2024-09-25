@@ -1,12 +1,13 @@
 import 'package:get_it/get_it.dart';
-import '../../movies/domain/usecases/get_movie_recommendation_usecase.dart';
-import '../../movies/domain/usecases/get_movie_details_usecase.dart';
-import '../../movies/domain/usecases/get_popular_movies_usecase.dart';
-import '../../movies/domain/usecases/get_top_rated_movies_usecase.dart';
+
 import '../../movies/data/datasourse/remote_datasourse.dart';
 import '../../movies/data/repository/movie_repo.dart';
 import '../../movies/domain/repository/base_movie_repo.dart';
+import '../../movies/domain/usecases/get_movie_details_usecase.dart';
+import '../../movies/domain/usecases/get_movie_recommendation_usecase.dart';
 import '../../movies/domain/usecases/get_now_playing_usecase.dart';
+import '../../movies/domain/usecases/get_popular_movies_usecase.dart';
+import '../../movies/domain/usecases/get_top_rated_movies_usecase.dart';
 import '../../movies/presentation/controller/bloc/movie_details_bloc.dart';
 import '../../movies/presentation/controller/movies_bloc.dart';
 
@@ -14,12 +15,17 @@ final sl = GetIt.instance;
 
 class ServicesLocater {
   init() {
+    // DataSourse
     sl.registerLazySingleton<BaseRemoteDatasourse>(
       () => RemoteDatasourse(),
     );
+
+    //Repo
     sl.registerLazySingleton<BaseMovieRepo>(
       () => MovieRepo(baseRemoteDatasourse: sl()),
     );
+
+    // UseCases
     sl.registerLazySingleton<GetNowPlayingUsecase>(
       () => GetNowPlayingUsecase(baseMovieRepo: sl()),
     );
@@ -35,6 +41,8 @@ class ServicesLocater {
     sl.registerLazySingleton<GetMovieRecommendationUsecase>(
       () => GetMovieRecommendationUsecase(baseMovieRepo: sl()),
     );
+
+    //Blocs
     sl.registerFactory<MoviesBloc>(
       () => MoviesBloc(sl(), sl(), sl()),
     );

@@ -2,11 +2,11 @@ import 'package:equatable/equatable.dart';
 
 class Recommendation extends Equatable {
   final int id;
-  final String backdropPath;
+  final String? backdropPath;
 
   const Recommendation({
     required this.id,
-    required this.backdropPath,
+    this.backdropPath,
   });
 
   @override

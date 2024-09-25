@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../core/services/sevices_locater.dart';
+import '../../../core/utils/app_string.dart';
 import '../components/now_playing_component.dart';
 import '../components/popular_component.dart';
 import '../components/top_rate_component.dart';
@@ -20,7 +21,6 @@ class MoviesScreen extends StatelessWidget {
         ..add(GetPopularMoviesEvent())
         ..add(GetTopRatedMoviesEvent()),
       child: Scaffold(
-        backgroundColor: Colors.grey.shade900,
         body: SingleChildScrollView(
           key: const Key('movieScrollView'),
           child: Column(
@@ -33,7 +33,7 @@ class MoviesScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "Popular",
+                      AppString.popular,
                       style: GoogleFonts.poppins(
                           fontSize: 19,
                           fontWeight: FontWeight.w500,
@@ -49,7 +49,7 @@ class MoviesScreen extends StatelessWidget {
                         child: Row(
                           children: [
                             Text(
-                              'See More',
+                              AppString.seeMore,
                               style: TextStyle(
                                 color: Colors.white,
                               ),
@@ -75,7 +75,7 @@ class MoviesScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "Top Rated",
+                      AppString.topRated,
                       style: GoogleFonts.poppins(
                           fontSize: 19,
                           fontWeight: FontWeight.w500,
@@ -91,7 +91,7 @@ class MoviesScreen extends StatelessWidget {
                         child: Row(
                           children: [
                             Text(
-                              'See More',
+                              AppString.seeMore,
                               style: TextStyle(
                                 color: Colors.white,
                               ),

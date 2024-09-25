@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
+
 import '../../../core/error/failure.dart';
 import '../../../core/usecase/base_usecase.dart';
 import '../entities/recommendation.dart';
